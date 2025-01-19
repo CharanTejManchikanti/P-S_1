@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTT Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>OTT Churn Prediction</h1>
+        <form action="/predict" method="post">
+            <label for="age">Age:</label>
+            <input type="number" name="age" placeholder="Enter your age" required>
+
+            <label for="gender">Gender:</label>
+            <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="no_of_days_subscribed">Days Subscribed:</label>
+            <input type="number" name="no_of_days_subscribed" placeholder="Enter the number of days subscribed" required>
+
+            <label for="multi_screen">Multi-Screen Access:</label>
+            <select name="multi_screen" required>
+                <option value="" disabled selected>Select Option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="mail_subscribed">Email Subscribed:</label>
+            <select name="mail_subscribed" required>
+                <option value="" disabled selected>Select Option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="weekly_mins_watched">Weekly Minutes Watched:</label>
+            <input type="number" name="weekly_mins_watched" placeholder="Enter weekly minutes watched" required>
+
+            <label for="minimum_daily_mins">Minimum Daily Minutes:</label>
+            <input type="number" name="minimum_daily_mins" placeholder="Enter minimum daily minutes watched" required>
+
+            <label for="maximum_daily_mins">Maximum Daily Minutes:</label>
+            <input type="number" name="maximum_daily_mins" placeholder="Enter maximum daily minutes watched" required>
+
+            <label for="weekly_max_night_mins">Weekly Max Night Minutes:</label>
+            <input type="number" name="weekly_max_night_mins" placeholder="Enter weekly max night minutes" required>
+
+            <label for="videos_watched">Videos Watched Weekly:</label>
+            <input type="number" name="videos_watched" placeholder="Enter videos watched weekly" required>
+
+            <label for="maximum_days_inactive">Maximum Days Inactive:</label>
+            <input type="number" name="maximum_days_inactive" placeholder="Enter max days inactive" required>
+
+            <label for="customer_support_calls">Customer Support Calls:</label>
+            <input type="number" name="customer_support_calls" placeholder="Enter number of customer support calls" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Display prediction -->
+        {% if prediction_text %}
+        <div class="result">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
